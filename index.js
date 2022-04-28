@@ -12,11 +12,13 @@ const URI = process.env.DATABASE_URL;
 app.use(cors())
 app.use('/api/product', routerApiProduct)
 
-mongoose.connect(URI).then(() => {
-    console.log('Connected to DB');
-    app.listen(PORT, () => {
-        console.log(`Example app http://localhost:${PORT}/api/product`);
-    });
-}).catch(err => {
-    console.log(err)
-})
+mongoose.connect(URI)
+    .then(() => {
+        console.log('Connected to DB');
+        app.listen(PORT, () => {
+            console.log(`Example app http://localhost:${PORT}/api/product`);
+        });
+    })
+    .catch(err => {
+        console.log(err)
+    })
